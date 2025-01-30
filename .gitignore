@@ -1,0 +1,25 @@
+# Dossiers Build
+[Bb]in/
+[Oo]bj/
+
+# Dossiers et fichiers Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Packages NuGet
+packages/
+*.nupkg
+
+# Fichiers temporaires
+[Tt]emp/
+*.tmp
+*.log
+
+# Fichiers de build
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
