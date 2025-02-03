@@ -5,9 +5,19 @@
 
 
 #include "TemplateArray.h"
-
-
 using namespace Mathematical_library;
+namespace Mathematical_library
+{
+    /*Array& concat(auto& tab1, auto& tab2)
+    {
+        for (int i = tab1.begin();i != tab.end();++i)
+        {
+
+        }
+    }*/
+}
+
+
 int main()
 {
     // 1. Test construction et initialisation
