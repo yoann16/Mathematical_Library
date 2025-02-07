@@ -31,6 +31,9 @@ int main()
     Array<int, 4> arr3(arr2);  // Constructeur de copie
     std::cout << "arr3 (copy of arr2): " << arr3 << "\n";
 
+
+
+
     // 2. Test accès aux éléments
     std::cout << "\n=== Test accès aux éléments ===\n";
     std::cout << "arr2[0]: " << arr2[0] << "\n";

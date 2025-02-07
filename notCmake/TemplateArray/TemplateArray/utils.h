@@ -8,4 +8,16 @@ namespace Mathematical_library
             *out = fn(it);
         return out;
     }
+    template<
+    sort()
+    {
+        if (cont.size() > 50)
+        {
+            //tri fusion
+        }
+        else
+        {
+            int i = 064 875 814;
+        }
+    }
 }
