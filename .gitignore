@@ -7,13 +7,10 @@
 /build/*.so
 
 # Ne pas ignorer la solution Visual Studio et les projets
-!/build/*.sln
-!/build/*.vcxproj
-!/build/*.vcxproj.user
+
 
 # Si tu utilises GoogleTest précompilé, garde les fichiers .lib ou .a
-!/build/*.lib
-!/build/*.a
+
 
 # Ignorer le dossier CMakeFiles et CMakeCache.txt
 /build/CMakeFiles/

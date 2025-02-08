@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Projet&amp;Etude\GamingCampus\Projet\librairie_Mathématique\Library_Mathematics\build\_deps\googletest-src\googletest\src\gtest_main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Projet&amp;Etude\GamingCampus\Projet\librairie_Mathématique\Library_Mathematics\build\_deps\googletest-src\googletest\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C47563A4-727D-3761-9803-070372F80097}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

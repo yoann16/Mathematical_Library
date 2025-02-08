@@ -1,0 +1,10 @@
+^E:\PROJET&ETUDE\GAMINGCAMPUS\PROJET\LIBRAIRIE_MATHÉMATIQUE\LIBRARY_MATHEMATICS\BUILD\CMAKEFILES\95429E09B59F67C82E65127CFB6874FF\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SE:/Projet&Etude/GamingCampus/Projet/librairie_Mathématique/Library_Mathematics" "-BE:/Projet&Etude/GamingCampus/Projet/librairie_Mathématique/Library_Mathematics/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "E:/Projet&Etude/GamingCampus/Projet/librairie_Mathématique/Library_Mathematics/build/Library_Mathematics.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
