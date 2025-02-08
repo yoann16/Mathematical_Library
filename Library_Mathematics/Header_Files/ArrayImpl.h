@@ -1,5 +1,5 @@
 #ifndef MY_ARRAY_H
-#error Do not include this header directly. Please include TemplateArray.h
+#error Do not include this header directly. Please include Array.h
 #endif
 
 
@@ -7,8 +7,8 @@ namespace Mathematical_library
 {
 	template<typename Type, std::size_t Size>
 	Array<Type, Size>::Array()
+		: array{}
 	{
-		std::fill(array, array + Size, Type{});
 	}
 	template<typename Type, std::size_t Size>
 	Array<Type, Size>::Array(const std::initializer_list<Type>& list)
@@ -49,7 +49,7 @@ namespace Mathematical_library
 	template<typename Type, std::size_t Size>
 	bool Array<Type, Size>::operator==(const Array& other) const
 	{
-		for (std::size_t i = 0; i < Size; ++i) 
+		for (std::size_t i = 0; i < Size; ++i)
 		{
 			if (array[i] != other.array[i])
 				return false;
@@ -58,12 +58,12 @@ namespace Mathematical_library
 	}
 
 	template<typename Type, std::size_t Size>
-	bool Array<Type, Size>::operator!=(const Array& other) const {return !(*this == other);}
+	bool Array<Type, Size>::operator!=(const Array& other) const { return !(*this == other); }
 
 	template<typename Type, std::size_t Size>
 	bool Array<Type, Size>::operator<(const Array& other) const
 	{
-		for (std::size_t i = 0; i < Size; ++i) 
+		for (std::size_t i = 0; i < Size; ++i)
 		{
 			if (array[i] < other.array[i])
 				return true;
@@ -74,13 +74,13 @@ namespace Mathematical_library
 	}
 
 	template<typename Type, std::size_t Size>
-	bool Array<Type, Size>::operator>(const Array& other) const {return other < *this;}
+	bool Array<Type, Size>::operator>(const Array& other) const { return other < *this; }
 
 	template<typename Type, std::size_t Size>
-	bool Array<Type, Size>::operator<=(const Array& other) const {return !(other < *this);}
+	bool Array<Type, Size>::operator<=(const Array& other) const { return !(other < *this); }
 
 	template<typename Type, std::size_t Size>
-	bool Array<Type, Size>::operator>=(const Array& other) const {return !(*this < other);}
+	bool Array<Type, Size>::operator>=(const Array& other) const { return !(*this < other); }
 
 	template<typename Type, std::size_t Size>
 	constexpr std::size_t Array<Type, Size>::size() const
@@ -139,50 +139,50 @@ namespace Mathematical_library
 
 
 	template<typename Type, std::size_t Size>
-	constexpr typename Array<Type, Size>::iterator Array<Type, Size>::begin() 
+	constexpr typename Array<Type, Size>::iterator Array<Type, Size>::begin()
 	{
 		return array;
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr typename Array<Type, Size>::const_iterator Array<Type, Size>::begin() const 
+	constexpr typename Array<Type, Size>::const_iterator Array<Type, Size>::begin() const
 	{
 		return array;
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr typename Array<Type, Size>::iterator Array<Type, Size>::end() 
+	constexpr typename Array<Type, Size>::iterator Array<Type, Size>::end()
 	{
 		return array + Size;
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr typename Array<Type, Size>::const_iterator Array<Type, Size>::end() const 
+	constexpr typename Array<Type, Size>::const_iterator Array<Type, Size>::end() const
 	{
 		return array + Size;
 	}
 
 
 	template<typename Type, std::size_t Size>
-	constexpr std::reverse_iterator<typename Array<Type, Size>::iterator> Array<Type, Size>::rbegin() 
+	constexpr std::reverse_iterator<typename Array<Type, Size>::iterator> Array<Type, Size>::rbegin()
 	{
 		return std::reverse_iterator<iterator>(end());
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::rbegin() const 
+	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::rbegin() const
 	{
 		return std::reverse_iterator<const_iterator>(end());
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr std::reverse_iterator<typename Array<Type, Size>::iterator> Array<Type, Size>::rend() 
+	constexpr std::reverse_iterator<typename Array<Type, Size>::iterator> Array<Type, Size>::rend()
 	{
 		return std::reverse_iterator<iterator>(begin());
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::rend() const 
+	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::rend() const
 	{
 		return std::reverse_iterator<const_iterator>(begin());
 	}
@@ -194,19 +194,19 @@ namespace Mathematical_library
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr typename Array<Type, Size>::const_iterator Array<Type, Size>::cend() const 
+	constexpr typename Array<Type, Size>::const_iterator Array<Type, Size>::cend() const
 	{
 		return array + Size;
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::crbegin() const 
+	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::crbegin() const
 	{
 		return std::reverse_iterator<const_iterator>(end());
 	}
 
 	template<typename Type, std::size_t Size>
-	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::crend() const 
+	constexpr std::reverse_iterator<typename Array<Type, Size>::const_iterator> Array<Type, Size>::crend() const
 	{
 		return std::reverse_iterator<const_iterator>(begin());
 	}

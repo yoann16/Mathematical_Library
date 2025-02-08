@@ -32,6 +32,24 @@ namespace Mathematical_library
         constexpr inner_type& operator[](const std::size_t position);
         constexpr const inner_type& operator[](std::size_t position) const;
 
+        
+        bool operator==(const Array& other) const;
+
+        
+        bool operator!=(const Array& other) const;
+
+        
+        bool operator<(const Array& other) const;
+
+        
+        bool operator>(const Array& other) const;
+
+        
+        bool operator<=(const Array& other) const;
+
+        
+        bool operator>=(const Array& other) const;
+
         constexpr std::size_t size() const;
         constexpr std::size_t max_size() const;
         constexpr bool empty() const;

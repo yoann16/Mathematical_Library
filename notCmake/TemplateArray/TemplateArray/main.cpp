@@ -1,87 +1,143 @@
-﻿// TemplateArray.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-#include <vector>
+﻿#include <iostream>
+#include <cassert>
 #include <array>
-
-
 #include "TemplateArray.h"
-using namespace Mathematical_library;
-namespace Mathematical_library
-{
-    /*Array& concat(auto& tab1, auto& tab2)
-    {
-        for (int i = tab1.begin();i != tab.end();++i)
-        {
 
-        }
-    }*/
+using namespace Mathematical_library;
+
+template<typename T, std::size_t Size>
+void compareArrays(const std::array<T, Size>& stdArr, const Array<T, Size>& myArr) {
+    // Comparaison de taille
+    assert(stdArr.size() == myArr.size());
+
+    // Comparaison des éléments
+    for (std::size_t i = 0; i < Size; ++i) {
+        assert(stdArr[i] == myArr[i]);
+    }
 }
 
-
-int main()
-{
+int main() {
     // 1. Test construction et initialisation
-    std::cout << "=== Test construction et initialisation ===\n";
-    Array<int, 4> arr1;  // Constructeur par défaut
-    std::cout << "arr1 (default): " << arr1 << "\n";
+    {
+        std::array<int, 4> stdArr1 = { 0, 0, 0, 0 };
+        Array<int, 4> myArr1;
+        compareArrays(stdArr1, myArr1);
 
-    Array<int, 4> arr2 = { 1, 2, 3, 4 };  // Initializer list
-    std::cout << "arr2 (init list): " << arr2 << "\n";
-
-    Array<int, 4> arr3(arr2);  // Constructeur de copie
-    std::cout << "arr3 (copy of arr2): " << arr3 << "\n";
-
-
-
+        std::array<int, 4> stdArr2 = { 1, 2, 3, 4 };
+        Array<int, 4> myArr2 = { 1, 2, 3, 4 };
+        compareArrays(stdArr2, myArr2);
+    }
 
     // 2. Test accès aux éléments
-    std::cout << "\n=== Test accès aux éléments ===\n";
-    std::cout << "arr2[0]: " << arr2[0] << "\n";
-    std::cout << "arr2.at(1): " << arr2.at(1) << "\n";
-    std::cout << "arr2.front(): " << arr2.front() << "\n";
-    std::cout << "arr2.back(): " << arr2.back() << "\n";
+    {
+        std::array<int, 4> stdArr = { 1, 2, 3, 4 };
+        Array<int, 4> myArr = { 1, 2, 3, 4 };
+
+        // Test opérateur []
+        for (std::size_t i = 0; i < stdArr.size(); ++i) {
+            assert(stdArr[i] == myArr[i]);
+        }
+
+        // Test at()
+        for (std::size_t i = 0; i < stdArr.size(); ++i) {
+            assert(stdArr.at(i) == myArr.at(i));
+        }
+
+        // Test front() et back()
+        assert(stdArr.front() == myArr.front());
+        assert(stdArr.back() == myArr.back());
+
+        // Test data()
+        assert(*stdArr.data() == *myArr.data());
+    }
 
     // 3. Test itérateurs
-    std::cout << "\n=== Test itérateurs ===\n";
-    std::cout << "Normal iterator: ";
-    for (auto it = arr2.begin(); it != arr2.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << "\n";
+    {
+        std::array<int, 4> stdArr = { 1, 2, 3, 4 };
+        Array<int, 4> myArr = { 1, 2, 3, 4 };
 
-    std::cout << "Reverse iterator: ";
-    for (auto it = arr2.rbegin(); it != arr2.rend(); ++it) {
-        std::cout << *it << " ";
+        // Test begin() et end()
+        {
+            auto stdIt = stdArr.begin();
+            auto myIt = myArr.begin();
+            while (stdIt != stdArr.end()) {
+                assert(*stdIt == *myIt);
+                ++stdIt;
+                ++myIt;
+            }
+        }
+
+        // Test rbegin() et rend()
+        {
+            auto stdRit = stdArr.rbegin();
+            auto myRit = myArr.rbegin();
+            while (stdRit != stdArr.rend()) {
+                assert(*stdRit == *myRit);
+                ++stdRit;
+                ++myRit;
+            }
+        }
     }
-    std::cout << "\n";
 
     // 4. Test modifications
-    std::cout << "\n=== Test modifications ===\n";
-    arr1.fill(42);
-    std::cout << "arr1 after fill(42): " << arr1 << "\n";
+    {
+        // Test fill()
+        {
+            std::array<int, 4> stdArr;
+            Array<int, 4> myArr;
 
-    arr1.assign(10);
-    std::cout << "arr1 after assign(10): " << arr1 << "\n";
+            stdArr.fill(42);
+            myArr.fill(42);
+            compareArrays(stdArr, myArr);
+        }
 
-    std::cout << "Before swap:\n";
-    std::cout << "arr1: " << arr1 << "\n";
-    std::cout << "arr2: " << arr2 << "\n";
+        // Test swap()
+        {
+            std::array<int, 4> stdArr1 = { 1, 2, 3, 4 };
+            std::array<int, 4> stdArr2 = { 5, 6, 7, 8 };
+            Array<int, 4> myArr1 = { 1, 2, 3, 4 };
+            Array<int, 4> myArr2 = { 5, 6, 7, 8 };
 
-    arr1.swap(arr2);
+            stdArr1.swap(stdArr2);
+            myArr1.swap(myArr2);
 
-    std::cout << "After swap:\n";
-    std::cout << "arr1: " << arr1 << "\n";
-    std::cout << "arr2: " << arr2 << "\n";
-
-    // 5. Test avec des exceptions
-    std::cout << "\n=== Test exceptions ===\n";
-    try {
-        arr1.at(10);  // Devrait lancer une exception
+            compareArrays(stdArr1, myArr1);
+            compareArrays(stdArr2, myArr2);
+        }
     }
-    catch (const std::exception& e) {
-        std::cout << "Exception caught: " << e.what() << "\n";
+
+    // 5. Test exceptions
+    {
+        std::array<int, 4> stdArr = { 1, 2, 3, 4 };
+        Array<int, 4> myArr = { 1, 2, 3, 4 };
+
+        // Test out of bounds
+        try {
+            stdArr.at(10);
+            assert(false); // Ne devrait pas arriver
+        }
+        catch (const std::out_of_range&) {
+            try {
+                myArr.at(10);
+                assert(false); // Ne devrait pas arriver
+            }
+            catch (const std::runtime_error&) {
+                // Ok, exception capturée
+                std::cout << "Test out of bounds reussi" << std::endl;
+            }
+        }
     }
 
+    // 6. Test propriétés supplémentaires
+    {
+        std::array<int, 4> stdArr = { 1, 2, 3, 4 };
+        Array<int, 4> myArr = { 1, 2, 3, 4 };
+
+        assert(stdArr.size() == myArr.size());
+        assert(stdArr.max_size() == myArr.max_size());
+        assert(stdArr.empty() == myArr.empty());
+    }
+
+    std::cout << "Tous les tests ont réussi !" << std::endl;
     return 0;
 }
-

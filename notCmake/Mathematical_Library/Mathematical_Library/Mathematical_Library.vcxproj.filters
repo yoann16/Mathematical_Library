@@ -26,5 +26,8 @@
     <ClInclude Include="ArrayImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Outils_Math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

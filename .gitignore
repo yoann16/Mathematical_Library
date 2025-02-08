@@ -1,25 +1,40 @@
-# Dossiers Build
-[Bb]in/
-[Oo]bj/
+# Ignorer les fichiers de compilation, binaires et temporaires
+/build/*.log
+/build/*.obj
+/build/*.pdb
+/build/*.exe
+/build/*.dll
+/build/*.so
 
-# Dossiers et fichiers Visual Studio
-.vs/
-*.user
-*.userosscache
-*.suo
-*.userprefs
+# Ne pas ignorer la solution Visual Studio et les projets
+!/build/*.sln
+!/build/*.vcxproj
+!/build/*.vcxproj.user
 
-# Packages NuGet
-packages/
-*.nupkg
+# Si tu utilises GoogleTest précompilé, garde les fichiers .lib ou .a
+!/build/*.lib
+!/build/*.a
 
-# Fichiers temporaires
-[Tt]emp/
-*.tmp
+# Ignorer le dossier CMakeFiles et CMakeCache.txt
+/build/CMakeFiles/
+/build/CMakeCache.txt
+
+# Fichiers de configuration IDE
+.vscode/
+.idea/
+
+# Fichiers temporaires d'éditeur (Emacs, Vim, etc.)
+*~
+.dir-locals.el
+.#*
+*.swp
+
+# Dépendances externes si elles sont ajoutées manuellement
+/external/
+/notCmake/
+
+# Fichiers de log et cache
 *.log
-
-# Fichiers de build
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
+*.cache
+# Ignorer le dossier Visual Studio (.vs)
+.vs/
